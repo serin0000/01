@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lucky Crow｜幸運烏鴉</title>
+    <!-- Google Fonts for mystical atmosphere -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 導覽列 -->
+    <header class="navbar">
+        <div class="logo">🐦‍⬛ LUCKY CROW</div>
+
+        <nav>
+            <a href="#home">首頁</a>
+            <a href="#lucky">今日幸運</a>
+            <a href="#history">幸運物誌</a>
+            <a href="#about">關於</a>
+        </nav>
+
+        <button class="sound-toggle" id="soundToggle" title="點擊切換音效">
+            <span id="soundIcon">🔊</span> <span id="soundText">音效</span>
+        </button>
+    </header>
+
+
+    <!-- Hero 主視覺 -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="moon"></div>
+
+            <div class="stars">
+                <span>✦</span>
+                <span>✧</span>
+                <span>✦</span>
+                <span>✧</span>
+                <span>✦</span>
+            </div>
+
+            <div class="hero-content">
+
+                <p class="subtitle">
+                    DISCOVER YOUR FORTUNE
+                </p>
+
+                <h1>
+                    你的幸運<br>
+                    正在等待
+                </h1>
+
+                <p class="description">
+                    跟隨神秘的烏鴉，尋找屬於你的幸運物。
+                </p>
+
+                <button class="lucky-button" id="drawBtn">
+                    召喚幸運
+                </button>
+
+            </div>
+
+            <!-- 寫實烏鴉 -->
+            <div class="crow-container" id="crowContainer">
+
+                <img
+                    src="assets/crow-realistic.png"
+                    alt="神秘的黑色烏鴉"
+                    class="realistic-crow"
+                    id="crow"
+                    onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='assets/crow-realistic.png.png';}"
+                >
+
+                <!-- 羽毛產生區 -->
+                <div class="feather-container" id="featherContainer"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 幸運物展示 -->
+        <section class="lucky-section" id="lucky">
+
+            <p class="section-label">
+                TODAY'S LUCKY OBJECT
+            </p>
+
+            <h2>今日幸運物</h2>
+
+            <div class="lucky-card" id="luckyCard">
+
+                <div class="card-icon" id="cardIcon">
+                    🪶
+                </div>
+
+                <h3 id="cardTitle">金色羽毛</h3>
+
+                <p id="cardDesc">
+                    勇敢迎接新的可能，
+                    今天適合踏出新的第一步。
+                </p>
+
+                <span class="rarity" id="cardRarity">
+                    ✦ RARE ✦
+                </span>
+
+            </div>
+
+            <button class="reroll-button" id="rerollBtn">
+                ↻ 再次占卜
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             幸運物誌
+        ========================= -->
+        <section class="lucky-history" id="history">
+
+            <div class="history-header">
+
+                <p class="section-label">
+                    THE STORY OF LUCKY OBJECTS
+                </p>
+
+                <h2>幸運物誌</h2>
+
+                <p class="history-intro">
+                    不同文化與時代，都曾將某些物件視為
+                    幸運、守護與希望的象徵。
+                    探索它們背後流傳的故事。
+                </p>
+
+            </div>
+
+
+            <div class="lucky-grid">
+
+                <!-- 羽毛 -->
+                <article class="history-card">
+
+                    <div class="history-icon">
+                        🪶
+                    </div>
+
+                    <h3>羽毛</h3>
+
+                    <span class="history-subtitle">
+                        FREEDOM & GUIDANCE
+                    </span>
+
+                    <h4>由來</h4>
+
+                    <p>
+                        羽毛來自鳥類，在許多文化的象徵傳統中，
+                        常與天空、飛翔以及神聖力量產生聯繫。
+                        人們也會將羽毛視為來自天空的訊息。
+                    </p>
+
+                    <h4>象徵意涵</h4>
+
+                    <p>
+                        象徵自由、指引、希望與新的開始。
+                        在「幸運烏鴉」的故事裡，
+                        羽毛代表穿越未知時所得到的指引。
+                    </p>
+
+                </article>
+
+
+                <!-- 四葉草 -->
+                <article class="history-card">
+
+                    <div class="history-icon">
+                        🍀
+                    </div>
+
+                    <h3>四葉草</h3>
+
+                    <span class="history-subtitle">
+                        LUCK & HOPE
+                    </span>
+
+                    <h4>由來</h4>
+
+                    <p>
+                        四葉草是三葉草中較少見的變異形式。
+                        因為相對罕見，人們逐漸將找到四葉草
+                        視為幸運的象徵。
+                    </p>
+
+                    <h4>象徵意涵</h4>
+
+                    <p>
+                        傳統上常將四片葉子分別聯想到
+                        幸運、希望、信念與愛，
+                        因此成為廣為人知的幸運象徵。
+                    </p>
+
+                </article>
+
+
+                <!-- 護身符 -->
+                <article class="history-card">
+
+                    <div class="history-icon">
+                        🧿
+                    </div>
+
+                    <h3>護身符</h3>
+
+                    <span class="history-subtitle">
+                        PROTECTION
+                    </span>
+
+                    <h4>由來</h4>
+
+                    <p>
+                        護身符的傳統存在於世界各地，
+                        人們會將特定物件、符號或圖案
+                        視為守護自身的象徵。
+                    </p>
+
+                    <h4>象徵意涵</h4>
+
+                    <p>
+                        主要象徵保護、平安與驅除不祥。
+                        它也代表人們面對未知時，
+                        對安全與希望的寄託。
+                    </p>
+
+                </article>
+
+
+                <!-- 水晶 -->
+                <article class="history-card">
+
+                    <div class="history-icon">
+                        💎
+                    </div>
+
+                    <h3>水晶</h3>
+
+                    <span class="history-subtitle">
+                        CLARITY & BEAUTY
+                    </span>
+
+                    <h4>由來</h4>
+
+                    <p>
+                        水晶因透明、晶體結構與自然形成的
+                        幾何外觀，在不同時代被賦予特殊的
+                        文化與象徵意義。
+                    </p>
+
+                    <h4>象徵意涵</h4>
+
+                    <p>
+                        在現代幸運物文化中，
+                        水晶常被用來象徵清晰、純粹、
+                        希望與內在力量。
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 關於 -->
+        <section class="about" id="about">
+
+            <h2>Lucky Crow</h2>
+
+            <p>
+                在夜色與月光之間，
+                烏鴉將帶領你尋找未知的幸運。
+            </p>
+
+            <div class="footer-note">
+                © 2026 Lucky Crow. May fortune favor the bold.
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 音效或動畫提示特效容器 -->
+    <div id="particleContainer"></div>
+
+    <!-- 祝福提示框 -->
+    <div id="toast" class="blessing-toast">✦ 烏鴉的祝福已銘刻於心 ✦</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

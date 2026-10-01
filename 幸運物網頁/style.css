@@ -1,0 +1,1167 @@
+/* ====================================================
+   LUCKY CROW｜幸運烏鴉
+   主題風格：神秘黑夜 × 紅 × 銀 (Dark Night × Crimson × Silver)
+   ==================================================== */
+
+:root {
+    --black: #050509;
+    --dark-black: #09090e;
+
+    --dark-red: #3d050b;
+    --red: #8f0b1c;
+    --bright-red: #d51f38;
+
+    --silver: #bfc4cc;
+    --light-silver: #f0f2f5;
+    --dark-silver: #686d76;
+
+    --shadow-red: rgba(190, 15, 40, 0.35);
+
+    --font-heading: 'Cinzel', 'Noto Serif TC', serif;
+    --font-body: 'Noto Serif TC', -apple-system, BlinkMacSystemFont, "Segoe UI", serif;
+    --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================
+   基本重設
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+   Body
+========================= */
+
+body {
+    background: var(--black);
+    color: var(--light-silver);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+main {
+    padding-top: 70px;
+}
+
+/* =========================
+   導覽列
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    background: rgba(5, 5, 9, 0.78);
+    border-bottom: 1px solid rgba(190, 196, 205, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1000;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 3px;
+    color: var(--silver);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+}
+
+.logo::first-letter {
+    color: var(--bright-red);
+}
+
+nav {
+    display: flex;
+    gap: 2.2rem;
+}
+
+nav a {
+    color: var(--dark-silver);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    position: relative;
+    padding: 6px 0;
+}
+
+nav a:hover {
+    color: var(--bright-red);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: var(--bright-red);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* 音效切換按鈕 */
+.sound-toggle {
+    background: rgba(213, 31, 56, 0.12);
+    border: 1px solid rgba(213, 31, 56, 0.35);
+    color: var(--silver);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+}
+
+.sound-toggle:hover {
+    background: rgba(213, 31, 56, 0.28);
+    color: var(--light-silver);
+    border-color: var(--bright-red);
+    box-shadow: 0 0 14px rgba(213, 31, 56, 0.4);
+    transform: translateY(-2px);
+}
+
+.sound-toggle:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   Hero 主視覺
+========================= */
+
+.hero {
+    position: relative;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #250910 0%,
+            #10070b 35%,
+            #050509 75%
+        );
+}
+
+/* 紅色光暈 */
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    bottom: -300px;
+    transform: translateX(-50%);
+    background:
+        radial-gradient(
+            circle,
+            rgba(160, 0, 25, 0.18),
+            transparent 70%
+        );
+    pointer-events: none;
+}
+
+/* =========================
+   紅色月亮・Blood Moon
+========================= */
+
+.moon {
+    position: absolute;
+    top: 12%;
+    right: 18%;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff6b6b 0%,
+            #d51f38 35%,
+            #8f0b1c 65%,
+            #3d050b 100%
+        );
+    box-shadow:
+        0 0 25px rgba(255, 45, 65, 0.55),
+        0 0 60px rgba(190, 15, 40, 0.45),
+        0 0 130px rgba(130, 0, 20, 0.25);
+    opacity: 0.95;
+    animation: moonPulse 6s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes moonPulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.03); filter: brightness(1.15) drop-shadow(0 0 20px rgba(213, 31, 56, 0.4)); }
+}
+
+/* =========================
+   星星
+========================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.stars span {
+    position: absolute;
+    color: var(--silver);
+    font-size: 1.2rem;
+    opacity: 0.4;
+    text-shadow:
+        0 0 10px rgba(220, 225, 230, 0.7);
+    animation: starTwinkle 3.5s ease-in-out infinite alternate;
+}
+
+.stars span:nth-child(1) { top: 22%; left: 15%; animation-delay: 0.2s; font-size: 1rem; }
+.stars span:nth-child(2) { top: 40%; left: 45%; animation-delay: 1.1s; font-size: 1.4rem; }
+.stars span:nth-child(3) { top: 15%; right: 35%; animation-delay: 2.3s; font-size: 0.9rem; }
+.stars span:nth-child(4) { top: 65%; left: 25%; animation-delay: 1.7s; font-size: 1.3rem; }
+.stars span:nth-child(5) { top: 55%; right: 12%; animation-delay: 0.8s; font-size: 1.1rem; }
+
+@keyframes starTwinkle {
+    0% { opacity: 0.2; transform: scale(0.8) rotate(0deg); }
+    50% { opacity: 0.9; transform: scale(1.2) rotate(15deg); text-shadow: 0 0 12px rgba(240, 242, 245, 0.9); }
+    100% { opacity: 0.3; transform: scale(0.9) rotate(-10deg); }
+}
+
+/* =========================
+   Hero 文字
+========================= */
+
+.hero-content {
+    max-width: 580px;
+    z-index: 2;
+    padding: 3rem 0;
+}
+
+.subtitle {
+    font-family: var(--font-heading);
+    color: var(--bright-red);
+    letter-spacing: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 3.6rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: var(--light-silver);
+    text-shadow:
+        0 0 25px rgba(220, 225, 235, 0.12),
+        0 0 60px rgba(130, 0, 20, 0.25);
+}
+
+.description {
+    color: #8e939c;
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   按鈕
+========================= */
+
+.lucky-button {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 16px 42px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid var(--bright-red);
+    color: var(--silver);
+    background: rgba(90, 5, 15, 0.12);
+    box-shadow: inset 0 0 20px rgba(140, 0, 20, 0.05);
+    transition: 0.35s;
+    animation: redGlow 3s infinite;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lucky-button:hover {
+    background: var(--bright-red);
+    color: white;
+    box-shadow:
+        0 0 25px var(--shadow-red),
+        0 0 60px rgba(150, 0, 20, 0.25);
+    transform: translateY(-3px);
+}
+
+.lucky-button:active {
+    transform: translateY(0);
+}
+
+/* 紅色呼吸光 */
+@keyframes redGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(180, 0, 30, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(210, 20, 50, 0.4);
+    }
+}
+
+/* =========================
+   寫實烏鴉
+========================= */
+
+.crow-container {
+    position: absolute;
+    right: 13%;
+    bottom: 18%;
+    width: 360px;
+    height: 360px;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 烏鴉圖片 */
+
+.realistic-crow {
+    position: relative;
+    width: 380px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 22px;
+    user-select: none;
+    -webkit-user-drag: none;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 65%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 65%, transparent 100%);
+    filter:
+        contrast(1.15)
+        brightness(0.9)
+        saturate(1.05)
+        drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85))
+        drop-shadow(0 0 30px rgba(213, 31, 56, 0.45));
+    animation:
+        crowIdle 4s ease-in-out infinite;
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+/* 烏鴉 Hover */
+
+.crow-container:hover .realistic-crow {
+    filter:
+        contrast(1.2)
+        brightness(1.02)
+        saturate(1.15)
+        drop-shadow(
+            0 0 35px rgba(213, 31, 56, 0.65)
+        );
+    transform:
+        scale(1.04)
+        translateY(-5px);
+}
+
+/* 烏鴉待機 */
+
+@keyframes crowIdle {
+    0% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+    50% {
+        transform:
+            translateY(-10px)
+            rotate(1deg);
+    }
+    100% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+}
+
+/* =========================
+   點擊後的烏鴉
+========================= */
+
+.realistic-crow.crow-active {
+    animation:
+        crowAttack 0.8s ease forwards;
+}
+
+@keyframes crowAttack {
+    0% {
+        transform:
+            scale(1)
+            translateY(0)
+            rotate(0deg);
+    }
+    20% {
+        transform:
+            scale(1.08)
+            translateY(-18px)
+            rotate(-3deg);
+    }
+    45% {
+        transform:
+            scale(1.15)
+            translateY(-30px)
+            rotate(3deg);
+    }
+    70% {
+        transform:
+            scale(1.08)
+            translateY(-12px)
+            rotate(-2deg);
+    }
+    100% {
+        transform:
+            scale(1)
+            translateY(0)
+            rotate(0deg);
+    }
+}
+
+/* =========================
+   羽毛容器
+========================= */
+
+.feather-container {
+    position: absolute;
+    inset: -100px;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* =========================
+   黑色羽毛
+========================= */
+
+.feather {
+    position: absolute;
+    width: 15px;
+    height: 38px;
+    background:
+        linear-gradient(
+            120deg,
+            #050505 0%,
+            #181818 40%,
+            #353535 55%,
+            #020202 100%
+        );
+    border-radius:
+        90% 10% 90% 10%;
+    opacity: 0;
+    transform-origin:
+        center bottom;
+    box-shadow:
+        0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+/* 羽毛中央的銀色反光 */
+
+.feather::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 90%;
+    left: 50%;
+    top: 5%;
+    background:
+        rgba(190, 195, 200, 0.3);
+}
+
+/* 羽毛飛散動畫 */
+
+.feather.fly {
+    animation:
+        featherFly var(--duration)
+        cubic-bezier(.2, .8, .3, 1)
+        forwards;
+}
+
+@keyframes featherFly {
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 0)
+            rotate(0deg)
+            scale(0.4);
+    }
+    15% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.95;
+    }
+    100% {
+        opacity: 0;
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--rotate))
+            scale(var(--scale));
+    }
+}
+
+/* =========================
+   紅色神秘光
+========================= */
+
+.crow-container::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(150, 0, 25, 0.18),
+            transparent 70%
+        );
+    filter: blur(20px);
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.crow-container:hover::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(210, 15, 40, 0.28),
+            transparent 70%
+        );
+}
+
+/* =========================
+   手機版烏鴉適應
+========================= */
+
+@media (max-width: 768px) {
+    .crow-container {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 280px;
+        height: 280px;
+        margin-top: 2rem;
+    }
+
+    .realistic-crow {
+        width: 260px;
+    }
+}
+
+/* =========================
+   幸運物區域
+========================= */
+
+.lucky-section {
+    position: relative;
+    padding: 100px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #21080d,
+            #0b080c 40%,
+            #050509 100%
+        );
+}
+
+.section-label {
+    font-family: var(--font-heading);
+    letter-spacing: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: var(--bright-red);
+}
+
+.lucky-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 3.5rem;
+    letter-spacing: 2px;
+    color: var(--light-silver);
+}
+
+/* =========================
+   幸運卡片
+========================= */
+
+.lucky-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 8, 14, 0.9),
+            rgba(10, 10, 15, 0.96)
+        );
+    border: 1px solid rgba(190, 196, 205, 0.22);
+    border-radius: 24px;
+    padding: 3.5rem 2.8rem;
+    max-width: 420px;
+    width: 90%;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.65),
+        inset 0 0 40px rgba(120, 0, 20, 0.08);
+    transition: 0.45s;
+    position: relative;
+    overflow: hidden;
+}
+
+.lucky-card:hover {
+    transform:
+        translateY(-10px)
+        rotateX(3deg);
+    border-color:
+        rgba(220, 225, 230, 0.55);
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(160, 0, 25, 0.18);
+}
+
+/* =========================
+   幸運物圖示
+========================= */
+
+.card-icon {
+    font-size: 4.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--silver);
+    filter:
+        grayscale(1)
+        drop-shadow(
+            0 0 15px rgba(220, 225, 230, 0.3)
+        );
+    transition: transform 0.4s ease;
+}
+
+.lucky-card:hover .card-icon {
+    transform: scale(1.12);
+}
+
+/* =========================
+   幸運物標題與說明
+========================= */
+
+.lucky-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.9rem;
+    letter-spacing: 2px;
+    color: var(--light-silver);
+    margin-bottom: 1rem;
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.lucky-card p {
+    color: #9297a0;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    min-height: 56px;
+}
+
+/* =========================
+   稀有度
+========================= */
+
+.rarity {
+    display: inline-block;
+    padding: 6px 18px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--bright-red);
+    border: 1px solid var(--bright-red);
+    background: rgba(213, 31, 56, 0.1);
+    border-radius: 50px;
+    text-shadow:
+        0 0 10px rgba(210, 20, 50, 0.4);
+    box-shadow:
+        0 0 15px rgba(213, 31, 56, 0.2);
+    transition: var(--transition);
+}
+
+/* 翻牌動畫 */
+.card-animate {
+    animation: cardReveal 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes cardReveal {
+    0% { transform: scale(0.88) rotateY(70deg); opacity: 0; filter: blur(6px); }
+    100% { transform: scale(1) rotateY(0deg); opacity: 1; filter: blur(0); }
+}
+
+/* 再次占卜按鈕 */
+.reroll-button {
+    margin-top: 2.2rem;
+    background: transparent;
+    color: var(--silver);
+    border: 1px solid rgba(190, 196, 205, 0.25);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.reroll-button:hover {
+    background: rgba(213, 31, 56, 0.15);
+    border-color: var(--bright-red);
+    color: var(--light-silver);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(213, 31, 56, 0.35);
+}
+
+/* =========================
+   幸運物誌
+========================= */
+
+.lucky-history {
+    position: relative;
+    padding: 140px 8%;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(100, 5, 15, 0.25),
+            transparent 50%
+        ),
+        #050509;
+    overflow: hidden;
+}
+
+/* 標題 */
+
+.history-header {
+    max-width: 700px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.history-header h2 {
+    margin-top: 15px;
+    color: #f0f2f5;
+    font-size: clamp(40px, 6vw, 60px);
+    font-weight: 400;
+    letter-spacing: 5px;
+}
+
+.history-intro {
+    margin-top: 25px;
+    color: #858a93;
+    line-height: 2;
+    font-size: 15px;
+}
+
+/* 卡片網格 */
+
+.lucky-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* 卡片 */
+
+.history-card {
+    position: relative;
+    padding: 45px 40px;
+    min-height: 520px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 7, 14, 0.92),
+            rgba(10, 10, 15, 0.97)
+        );
+    border: 1px solid rgba(190, 196, 205, 0.16);
+    border-radius: 18px;
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    overflow: hidden;
+}
+
+/* 卡片紅色光 */
+
+.history-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -100px;
+    right: -80px;
+    border-radius: 50%;
+    background: rgba(180, 10, 30, 0.15);
+    filter: blur(30px);
+    transition: 0.4s;
+}
+
+/* Hover */
+
+.history-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(210, 220, 230, 0.4);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(150, 0, 25, 0.15);
+}
+
+.history-card:hover::before {
+    background: rgba(220, 20, 45, 0.25);
+}
+
+/* 圖示 */
+
+.history-icon {
+    font-size: 55px;
+    margin-bottom: 25px;
+    filter:
+        grayscale(0.3)
+        drop-shadow(
+            0 0 15px rgba(220, 225, 230, 0.2)
+        );
+}
+
+/* 標題 */
+
+.history-card h3 {
+    color: #e8ebef;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+/* 英文副標 */
+
+.history-subtitle {
+    display: block;
+    margin-top: 8px;
+    color: #d51f38;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* 小標題 */
+
+.history-card h4 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #c8ccd2;
+    font-size: 14px;
+    letter-spacing: 2px;
+    border-left: 2px solid #b5122b;
+    padding-left: 10px;
+}
+
+/* 內文 */
+
+.history-card p {
+    color: #858a93;
+    font-size: 14px;
+    line-height: 2;
+}
+
+@media (max-width: 768px) {
+    .lucky-history {
+        padding: 100px 20px;
+    }
+
+    .lucky-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-card {
+        min-height: auto;
+        padding: 35px 28px;
+    }
+}
+
+/* =========================
+   About
+========================= */
+
+.about {
+    padding: 100px 10% 80px;
+    text-align: center;
+    border-top: 1px solid rgba(190, 196, 205, 0.08);
+    background: #050509;
+}
+
+.about h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    letter-spacing: 3px;
+    color: var(--silver);
+    margin-bottom: 1.2rem;
+}
+
+.about p {
+    color: #777c85;
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    letter-spacing: 1px;
+}
+
+.footer-note {
+    font-size: 0.85rem;
+    color: #4b515d;
+    letter-spacing: 1px;
+}
+
+/* 粒子光斑特效容器 */
+#particleContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    animation: particleFall linear forwards;
+}
+
+@keyframes particleFall {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(120px) scale(0); opacity: 0; }
+}
+
+/* ====================================================
+   動態互動特效 (Interactive & Motion Styles)
+   ==================================================== */
+
+/* 1. 全域點擊漣漪光環 (Click Ripple) */
+.click-ripple {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(213, 31, 56, 0.75);
+    box-shadow: 
+        0 0 16px rgba(213, 31, 56, 0.6),
+        inset 0 0 10px rgba(240, 242, 245, 0.5);
+    transform: translate(-50%, -50%) scale(0.2);
+    pointer-events: none;
+    z-index: 99999;
+    animation: rippleWave 0.65s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+@keyframes rippleWave {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(4.2);
+        opacity: 0;
+    }
+}
+
+/* 2. 滑鼠星塵微粒軌跡 (Cursor Stardust Trail) */
+.cursor-star {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 11px;
+    line-height: 1;
+    color: rgba(240, 242, 245, 0.9);
+    text-shadow: 0 0 8px rgba(213, 31, 56, 0.7);
+    transform: translate(-50%, -50%);
+    animation: cursorFade 0.75s cubic-bezier(0.1, 0.6, 0.3, 1) forwards;
+}
+
+@keyframes cursorFade {
+    0% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, calc(-50% - 24px)) scale(0.2) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* 3. 卡片 3D 視差與動態聚光燈 (Spotlight) */
+.lucky-card {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.lucky-card:active {
+    transform: scale(0.97) !important;
+}
+
+.card-spotlight {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(213, 31, 56, 0.16),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.history-card:hover .card-spotlight,
+.lucky-card:hover .card-spotlight {
+    opacity: 1;
+}
+
+/* 4. 祝福 Toast 提示框 */
+.blessing-toast {
+    position: fixed;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    background: rgba(15, 8, 12, 0.94);
+    border: 1px solid rgba(213, 31, 56, 0.6);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.85),
+        0 0 25px rgba(213, 31, 56, 0.4);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 12px 28px;
+    border-radius: 50px;
+    color: #f0f2f5;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    z-index: 99999;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.blessing-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================
+   響應式設計 (RWD)
+========================= */
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .moon {
+        width: 150px;
+        height: 150px;
+        top: 8%;
+        right: 8%;
+        opacity: 0.6;
+    }
+
+    .crow {
+        margin-top: 2rem;
+    }
+
+    .crow-avatar {
+        font-size: 5.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .navbar nav {
+        gap: 0.85rem;
+    }
+
+    .navbar nav a {
+        font-size: 0.88rem;
+    }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .lucky-card {
+        padding: 2.5rem 1.8rem;
+    }
+}
